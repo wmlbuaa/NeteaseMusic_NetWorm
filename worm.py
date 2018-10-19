@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding:utf-8
 # 实现一个简单的爬虫，爬取百度贴吧图片
-import urllib
+from urllib import request as urllib
 import re
 
 
@@ -39,14 +39,18 @@ def batchDownloadJPGs(imgUrls, path='./'):
 # 封装：从百度贴吧网页下载图片
 def download(url):
     html = getHtmlContent(url)
+    html = html.decode('utf-8')
     jpgs = getJPGs(html)
     batchDownloadJPGs(jpgs)
+    print("download url\n")
 
 
 def main():
-    url = 'http://tieba.baidu.com/p/2256306796'
+    url = 'https://unsplash.com/'
     download(url)
+    print("main loading\n")
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#   main()
+main()
